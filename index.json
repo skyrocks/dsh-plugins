@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "title": {
+    "zh": "skyrocks 的 DSH 插件",
+    "en": "skyrocks DSH plugins"
+  },
+  "description": {
+    "zh": "输入框下方的余额、花费与套餐额度：DeepSeek 账号余额 / 花费，OpenCode GO 三窗口用量。",
+    "en": "Balance, spend and quota under the composer: DeepSeek account spend and OpenCode GO usage."
+  },
+  "metadata": {
+    "categories": {
+      "usage": {
+        "title": {
+          "zh": "用量与花费",
+          "en": "Usage & spend"
+        }
+      }
+    },
+    "labels": {
+      "official": {
+        "title": {
+          "zh": "官方账号",
+          "en": "Official account"
+        }
+      },
+      "subscription": {
+        "title": {
+          "zh": "订阅套餐",
+          "en": "Subscription"
+        }
+      }
+    }
+  },
+  "plugins": [
+    {
+      "name": "@skyrocks/dsh-deepseek-cost",
+      "title": {
+        "zh": "DeepSeek 余额与花费",
+        "en": "DeepSeek balance & spend"
+      },
+      "description": {
+        "zh": "输入框下方常驻显示 DeepSeek 官网账号余额，以及本轮 / 今日 / 本周 / 本月 / 累计花费；悬浮看明细，点击刷新。",
+        "en": "Dock under the composer showing DeepSeek balance plus current-turn, day, week, month and lifetime spend."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-deepseek-cost",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-deepseek-cost"
+      },
+      "metadata": {
+        "category": "usage",
+        "keywords": [
+          "deepseek",
+          "balance",
+          "cost",
+          "usage",
+          "quota",
+          "dsh-plugin"
+        ],
+        "labels": [
+          "official"
+        ]
+      },
+      "versions": [
+        {
+          "version": "0.2.1",
+          "publishTimestamp": 1793945737,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-deepseek-cost",
+            "commit": "99e65134f5e8a5268af54994d624d971a2fde387"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "dsh-go-quota",
+      "title": {
+        "zh": "OpenCode GO 用量",
+        "en": "OpenCode GO quota"
+      },
+      "description": {
+        "zh": "输入框下方常驻显示 OpenCode GO 套餐的 5 小时 / 本周 / 本月三个额度窗口，标签 + 进度条 + 百分比，悬浮看重置倒计时。",
+        "en": "Dock showing the OpenCode GO 5-hour, weekly and monthly quota windows with progress bars and reset countdowns."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-go-quota",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-go-quota"
+      },
+      "metadata": {
+        "category": "usage",
+        "keywords": [
+          "opencode",
+          "opencode-go",
+          "quota",
+          "usage",
+          "dsh-plugin"
+        ],
+        "labels": [
+          "subscription"
+        ]
+      },
+      "versions": [
+        {
+          "version": "0.1.7",
+          "publishTimestamp": 1793945742,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-go-quota",
+            "commit": "679c3ddb08a446a25005369a4295b6a3be512980"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        }
+      ]
+    }
+  ]
+}
