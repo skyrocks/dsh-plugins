@@ -20,22 +20,22 @@
 
 ## 安装
 
-在 DSH 桌面端：设置 →「插件」→「添加插件」，粘贴下面的 GitHub 地址；或者直接用命令行：
+在 DSH 桌面端：设置 →「插件」→「添加插件」，粘贴下面对应的地址；或者直接用命令行：
 
 ```sh
-# DeepSeek 余额与花费
-dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
+# DeepSeek 余额与花费（国内推荐，CDN 直下）
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-deepseek-cost-0.2.2.tgz"
 
 # OpenCode GO 用量
-dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
-```
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/dsh-go-quota-0.1.8.tgz"
 
-也可以跟随 GitHub 默认分支：
-
-```sh
+# 或者跟随 GitHub 默认分支
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
 ```
+
+GUI 对应粘贴：CDN 用户粘上面的完整 URL；GitHub 用户粘 `github:skyrocks/dsh-deepseek-cost`
+和 `github:skyrocks/dsh-go-quota`。
 
 装完**完全退出 DSH 再打开**（Host 插件只在启动时加载）。`dsh web` 用户把
 `--profile desktop` 换成 `--profile web`。

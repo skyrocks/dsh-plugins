@@ -17,13 +17,13 @@ both docked under the composer so you can read quota and spend without leaving t
 In the desktop app: Settings → Plugins → Add plugin, paste one of the GitHub specs below. Or use the CLI:
 
 ```sh
-dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
-dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
-```
+# DeepSeek balance & spend (CDN, reliable behind firewalls)
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-deepseek-cost-0.2.2.tgz"
 
-Or track the GitHub default branch:
+# OpenCode GO quota
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/dsh-go-quota-0.1.8.tgz"
 
-```sh
+# Or track the GitHub default branch
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
 ```
