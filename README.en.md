@@ -36,6 +36,7 @@ Fully quit and relaunch DSH afterwards (host plugins load at startup). For `dsh 
 Add this URL in the experimental plugin market's Discover tab to browse and install both:
 
 ```
+https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json
 https://raw.githubusercontent.com/skyrocks/dsh-plugins/main/index.json
 ```
 
