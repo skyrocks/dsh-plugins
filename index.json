@@ -64,12 +64,12 @@
       },
       "versions": [
         {
-          "version": "0.2.1",
-          "publishTimestamp": 1793945737,
+          "version": "0.2.2",
+          "publishTimestamp": 1793948495,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-deepseek-cost",
-            "commit": "99e65134f5e8a5268af54994d624d971a2fde387"
+            "commit": "fdb1dba96c531e9473f2ad6a997881da1f5bd92d"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
