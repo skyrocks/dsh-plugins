@@ -20,14 +20,14 @@
 
 ## 安装
 
-在 DSH 桌面端：设置 →「插件」→「添加插件」，粘贴包名；或者直接用命令行：
+在 DSH 桌面端：设置 →「插件」→「添加插件」，粘贴下面的 GitHub 地址；或者直接用命令行：
 
 ```sh
 # DeepSeek 余额与花费
-dsh plugin --profile desktop add @skyrocks/dsh-deepseek-cost
+dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 
 # OpenCode GO 用量
-dsh plugin --profile desktop add dsh-go-quota
+dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
 ```
 
 也可以跟随 GitHub 默认分支：
