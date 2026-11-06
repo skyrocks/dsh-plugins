@@ -107,12 +107,12 @@
       },
       "versions": [
         {
-          "version": "0.1.7",
-          "publishTimestamp": 1793945742,
+          "version": "0.1.8",
+          "publishTimestamp": 1793948637,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-go-quota",
-            "commit": "679c3ddb08a446a25005369a4295b6a3be512980"
+            "commit": "ae0f3a2a1458efcbe4845f6ed25c7cc6234cc9c2"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
