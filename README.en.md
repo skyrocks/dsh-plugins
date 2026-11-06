@@ -1,31 +1,41 @@
 # skyrocks · DSH plugins
 
-Two small plugins for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`),
-both docked under the composer so you can read quota and spend without leaving the chat.
+Three small plugins for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`):
+two dock balance and quota readouts under the composer, and one turns "switch model" into tools
+the model itself can call.
 
-| Plugin | What it shows | Source |
+| Plugin | What it does | Shape |
 | --- | --- | --- |
-| [dsh-deepseek-cost](https://github.com/skyrocks/dsh-deepseek-cost) | DeepSeek balance · current-turn / day / week / month / lifetime spend | DeepSeek platform account |
-| [dsh-go-quota](https://github.com/skyrocks/dsh-go-quota) | OpenCode GO 5-hour / weekly / monthly windows | GO account usage |
+| [dsh-deepseek-cost](https://github.com/skyrocks/dsh-deepseek-cost) | DeepSeek balance · current-turn / day / week / month / lifetime spend | dock under the composer |
+| [dsh-go-quota](https://github.com/skyrocks/dsh-go-quota) | OpenCode GO 5-hour / weekly / monthly windows | dock under the composer |
+| [dsh-model-switcher](https://github.com/skyrocks/dsh-model-switcher) | `find_models` / `switch_model` tools, so the model can look up and switch models in chat | no UI (host tools) |
 
 <p align="center">
   <img src="assets/deepseek-cost-dock.png" alt="DeepSeek balance and spend dock" width="720">
 </p>
 
+<p align="center">
+  <img src="assets/go-quota-dock.png" alt="OpenCode GO quota dock" width="720">
+</p>
+
 ## Install
 
-In the desktop app: Settings → Plugins → Add plugin, paste one of the GitHub specs below. Or use the CLI:
+In the desktop app: Settings → Plugins → Add plugin, paste one of the specs below. Or use the CLI:
 
 ```sh
 # DeepSeek balance & spend (CDN, reliable behind firewalls)
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-deepseek-cost-0.2.2.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-deepseek-cost-0.2.3.tgz"
 
 # OpenCode GO quota
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/dsh-go-quota-0.1.8.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-go-quota-0.1.9.tgz"
+
+# Model switcher tools
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-model-switcher-0.2.1.tgz"
 
 # Or track the GitHub default branch
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
+dsh plugin --profile desktop add github:skyrocks/dsh-model-switcher
 ```
 
 Fully quit and relaunch DSH afterwards (host plugins load at startup). For `dsh web`, use
@@ -33,7 +43,7 @@ Fully quit and relaunch DSH afterwards (host plugins load at startup). For `dsh 
 
 ## Plugin index
 
-Add this URL in the experimental plugin market's Discover tab to browse and install both:
+Add this URL in the experimental plugin market's Discover tab to browse and install all three:
 
 ```
 https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json
@@ -42,17 +52,50 @@ https://raw.githubusercontent.com/skyrocks/dsh-plugins/main/index.json
 
 Requires the `@deepseek-ai/dsh-experimental-plugin-market-bundle` bundle to be enabled.
 
+## About the model switcher
+
+It is not a UI plugin: switching models by hand stays on the built-in `/model` popup. It registers
+two tools for the model — `find_models` reads what the session can actually switch to, and
+`switch_model` applies an exact pick. When one model family has several versions (say `glm-5.3` /
+`glm-5.3-flash` / `glm-5.2`), the candidates are listed for you to choose instead of being guessed.
+
+So you just say, in chat:
+
+```
+switch to glm
+use the fastest one
+move to deepseek reasoning
+```
+
+It needs DSH `>= 0.2.1-rc.3`; earlier builds exposed the model catalog through
+`apiProxy.sessions`, an interface that has since been removed.
+
 ## Why
 
 - Quota and spend live under the composer — no settings page, no dashboard.
 - Reads only the key already configured in your DSH profile; never sent to the browser.
 - Zero runtime dependencies, no native modules.
-- Hides itself when the session is not on the matching provider.
+- The two docks hide themselves when the session is not on the matching provider.
+- Model switching never guesses: candidates come from DSH's own catalog, and multiple versions
+  are always listed for the user.
 
 ## Compatibility
 
-DSH `>= 0.2.1-rc.2 < 0.3.0`, Node `>= 18`. Verified on macOS; Windows and Linux expected
+| Plugin | DSH |
+| --- | --- |
+| dsh-deepseek-cost | `>= 0.2.1-rc.2 < 0.3.0` |
+| dsh-go-quota | `>= 0.2.1-rc.2 < 0.3.0` |
+| dsh-model-switcher | `>= 0.2.1-rc.3 < 0.3.0` |
+
+Node `>= 18` (the desktop build ships Node 24). Verified on macOS; Windows and Linux expected
 to work.
+
+## Privacy
+
+- Credentials are read from the current DSH profile and used only in the host process.
+- No telemetry, no third-party services.
+- None of the three plugins modifies conversation content: the first two read usage metadata, the
+  third only calls DSH's own model catalog and selection interfaces.
 
 ## License
 

@@ -5,8 +5,8 @@
     "en": "skyrocks DSH plugins"
   },
   "description": {
-    "zh": "输入框下方的余额、花费与套餐额度：DeepSeek 账号余额 / 花费，OpenCode GO 三窗口用量。",
-    "en": "Balance, spend and quota under the composer: DeepSeek account spend and OpenCode GO usage."
+    "zh": "输入框下方的余额、花费与套餐额度，以及让模型自己查 / 切模型的工具插件。",
+    "en": "Composer-docked balance, spend and quota readouts, plus a tool plugin that lets the model look up and switch models itself."
   },
   "metadata": {
     "categories": {
@@ -14,6 +14,12 @@
         "title": {
           "zh": "用量与花费",
           "en": "Usage & spend"
+        }
+      },
+      "tools": {
+        "title": {
+          "zh": "效率工具",
+          "en": "Productivity"
         }
       }
     },
@@ -64,12 +70,12 @@
       },
       "versions": [
         {
-          "version": "0.2.2",
-          "publishTimestamp": 1793948495,
+          "version": "0.2.3",
+          "publishTimestamp": 1793965907,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-deepseek-cost",
-            "commit": "fdb1dba96c531e9473f2ad6a997881da1f5bd92d"
+            "commit": "83d54eacdfde9072f5b3137a602ed233bda17baf"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
@@ -78,7 +84,7 @@
       ]
     },
     {
-      "name": "dsh-go-quota",
+      "name": "@skyrocks/dsh-go-quota",
       "title": {
         "zh": "OpenCode GO 用量",
         "en": "OpenCode GO quota"
@@ -107,15 +113,56 @@
       },
       "versions": [
         {
-          "version": "0.1.8",
-          "publishTimestamp": 1793948637,
+          "version": "0.1.9",
+          "publishTimestamp": 1793965907,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-go-quota",
-            "commit": "ae0f3a2a1458efcbe4845f6ed25c7cc6234cc9c2"
+            "commit": "13da18aa5ec462c3fe2718bb130e311d8266bc62"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "@skyrocks/dsh-model-switcher",
+      "title": {
+        "zh": "模型切换工具",
+        "en": "Model switcher tools"
+      },
+      "description": {
+        "zh": "给模型用的两个工具：find_models 查当前会话真能选到的模型，switch_model 精确切换；同一模型的多个版本会列出来让用户选，不替你猜。无界面。",
+        "en": "Two model-callable tools: find_models lists what the session can actually switch to, switch_model applies an exact pick. Several versions of one model are listed for the user instead of guessed. No UI."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-model-switcher",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-model-switcher"
+      },
+      "metadata": {
+        "category": "tools",
+        "keywords": [
+          "model",
+          "model-switcher",
+          "tool",
+          "function-call",
+          "dsh-plugin"
+        ],
+        "labels": []
+      },
+      "versions": [
+        {
+          "version": "0.2.1",
+          "publishTimestamp": 1793965907,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-model-switcher",
+            "commit": "231507dd87452f354d8526c5448e82ca9d04a0d3"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.3 <0.3.0"
           }
         }
       ]
