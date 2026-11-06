@@ -45,6 +45,7 @@ dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
 DSH 的实验性插件市场支持自定义索引。添加这个地址，就能在 Discover 里浏览并安装上面两个插件：
 
 ```
+https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json   # 国内推荐
 https://raw.githubusercontent.com/skyrocks/dsh-plugins/main/index.json
 ```
 
