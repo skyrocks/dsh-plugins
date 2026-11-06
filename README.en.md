@@ -14,11 +14,11 @@ both docked under the composer so you can read quota and spend without leaving t
 
 ## Install
 
-In the desktop app: Settings → Plugins → Add plugin, paste a package name. Or use the CLI:
+In the desktop app: Settings → Plugins → Add plugin, paste one of the GitHub specs below. Or use the CLI:
 
 ```sh
-dsh plugin --profile desktop add @skyrocks/dsh-deepseek-cost
-dsh plugin --profile desktop add dsh-go-quota
+dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
+dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
 ```
 
 Or track the GitHub default branch:
