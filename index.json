@@ -157,12 +157,12 @@
       },
       "versions": [
         {
-          "version": "0.1.1",
-          "publishTimestamp": 1794195118,
+          "version": "0.1.2",
+          "publishTimestamp": 1794195266,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-go-model-limits",
-            "commit": "c39d8019dd1a19d9de43923540f6a7980ca71cd8"
+            "commit": "fe40180b2dd04f9f0375ae1c3c007aa8f05d1f0a"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.3 <0.3.0"
