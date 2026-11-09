@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | [dsh-deepseek-cost](https://github.com/skyrocks/dsh-deepseek-cost) | DeepSeek 余额 · 本轮 / 今日 / 本周 / 本月 / 累计花费 | 输入框下方 dock |
 | [dsh-go-quota](https://github.com/skyrocks/dsh-go-quota) | OpenCode GO 套餐的 5 小时 / 周 / 月三窗口 | 输入框下方 dock |
-| [dsh-go-model-limits](https://github.com/skyrocks/dsh-go-model-limits) | OpenCode GO 模型的官方 Monthly limit，按金额分档上色 | 模型菜单标签 |
+| [dsh-go-model-limits](https://github.com/skyrocks/dsh-go-model-limits) | OpenCode GO 模型的官方 Monthly limit，每个价格值独立配色 | 模型菜单标签 |
 | [dsh-model-switcher](https://github.com/skyrocks/dsh-model-switcher) | `find_models` / `switch_model` 两个工具，让模型在对话里自己查、自己切模型 | 无界面（Host 工具） |
 
 <p align="center">
@@ -37,7 +37,7 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-go-quota-0.1.9.tgz"
 
 # OpenCode GO 模型月度额度
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-go-model-limits-0.1.0.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-go-model-limits-0.1.1.tgz"
 
 # 模型切换工具
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-model-switcher-0.2.1.tgz"
@@ -82,8 +82,8 @@ https://raw.githubusercontent.com/skyrocks/dsh-plugins/main/index.json
 
 ## 关于模型月度额度
 
-它只改模型菜单的显示：在 `opencode-go` 分组的模型行后面加一个小标签，按金额分档上色
-（`<$30` 橙、`$30–$99` 蓝、`≥$100` 绿、无限紫）。数据来自 OpenCode 官方 Go 文档的价格表，
+它只改模型菜单的显示：在 `opencode-go` 分组的模型行后面加一个小标签，每个价格值一种颜色
+（`$15`、`$30`、`$60`、`$100` … 各不同，无限用渐变）。数据来自 OpenCode 官方 Go 文档的价格表，
 Host 会定时抓取并缓存（默认 6 小时），不需要 API Key；抓取失败时沿用上次数据或内置快照。
 官方 DeepSeek 账户等其他 provider 不显示标签。
 

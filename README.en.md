@@ -8,7 +8,7 @@ limit in the model picker, and one turns "switch model" into tools the model its
 | --- | --- | --- |
 | [dsh-deepseek-cost](https://github.com/skyrocks/dsh-deepseek-cost) | DeepSeek balance · current-turn / day / week / month / lifetime spend | dock under the composer |
 | [dsh-go-quota](https://github.com/skyrocks/dsh-go-quota) | OpenCode GO 5-hour / weekly / monthly windows | dock under the composer |
-| [dsh-go-model-limits](https://github.com/skyrocks/dsh-go-model-limits) | Official monthly limit for each OpenCode GO model, colour-coded by size | model menu tag |
+| [dsh-go-model-limits](https://github.com/skyrocks/dsh-go-model-limits) | Official monthly limit for each OpenCode GO model, one colour per price | model menu tag |
 | [dsh-model-switcher](https://github.com/skyrocks/dsh-model-switcher) | `find_models` / `switch_model` tools, so the model can look up and switch models in chat | no UI (host tools) |
 
 <p align="center">
@@ -35,7 +35,7 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-go-quota-0.1.9.tgz"
 
 # OpenCode GO model monthly limits
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-go-model-limits-0.1.0.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-go-model-limits-0.1.1.tgz"
 
 # Model switcher tools
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-model-switcher-0.2.1.tgz"
@@ -63,8 +63,8 @@ Requires the `@deepseek-ai/dsh-experimental-plugin-market-bundle` bundle to be e
 
 ## About the monthly limit labels
 
-It only changes the model menu: a small tag after each `opencode-go` model row, colour-coded by
-size (`<$30` amber, `$30–$99` blue, `≥$100` green, unlimited violet). The data comes from the
+It only changes the model menu: a small tag after each `opencode-go` model row, with one colour
+per price value (`$15`, `$30`, `$60`, `$100` … all distinct; unlimited uses a gradient). The data comes from the
 official OpenCode Go pricing docs; the host fetches and caches it (6 hours by default), with the
 bundled snapshot as a fallback. No API key is needed. Official DeepSeek account and other providers show no tag.
 
