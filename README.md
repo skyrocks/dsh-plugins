@@ -84,7 +84,8 @@ https://raw.githubusercontent.com/skyrocks/dsh-plugins/main/index.json
 
 它只改模型菜单的显示：在 `opencode-go` 分组的模型行后面加一个小标签，按金额分档上色
 （`<$30` 橙、`$30–$99` 蓝、`≥$100` 绿、无限紫）。数据来自 OpenCode 官方 Go 文档的价格表，
-发布前生成进 bundle，运行时不需要网络和 Key；官方 DeepSeek 账户等其他 provider 不显示标签。
+Host 会定时抓取并缓存（默认 6 小时），不需要 API Key；抓取失败时沿用上次数据或内置快照。
+官方 DeepSeek 账户等其他 provider 不显示标签。
 
 <p align="center">
   <img src="assets/go-model-limits-tooltip.png" alt="悬浮查看 Go / Go Plus / Go Teams 三档额度" width="720">

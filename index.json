@@ -133,8 +133,8 @@
         "en": "Model monthly limits"
       },
       "description": {
-        "zh": "在模型选择列表里给 OpenCode GO 的每个模型显示官方月度额度（Monthly limit），按金额分档上色；官方账户等其他 provider 不受影响。",
-        "en": "Show the official OpenCode GO monthly limit on every GO model row in the model picker, colour-coded by size; official account and other providers stay untouched."
+        "zh": "在模型选择列表里给 OpenCode GO 的每个模型显示官方月度额度（Monthly limit），按金额分档上色；额度由 Host 定时抓官方文档，官方账户等其他 provider 不受影响。",
+        "en": "Show the official OpenCode GO monthly limit on every GO model row in the model picker, colour-coded by size. The host refreshes it from the official docs on a schedule; official account and other providers stay untouched."
       },
       "author": "skyrocks",
       "homepage": "https://github.com/skyrocks/dsh-go-model-limits",
@@ -158,11 +158,11 @@
       "versions": [
         {
           "version": "0.1.0",
-          "publishTimestamp": 1794192215,
+          "publishTimestamp": 1794193931,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-go-model-limits",
-            "commit": "260e0515b0d8cfb18e076334137617dae5ba4790"
+            "commit": "5af71b38e9bf12af8046af5aa5ee2fbf9f2d0933"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.3 <0.3.0"

@@ -65,8 +65,8 @@ Requires the `@deepseek-ai/dsh-experimental-plugin-market-bundle` bundle to be e
 
 It only changes the model menu: a small tag after each `opencode-go` model row, colour-coded by
 size (`<$30` amber, `$30–$99` blue, `≥$100` green, unlimited violet). The data comes from the
-official OpenCode Go pricing docs and is baked into the bundle at release time; no runtime network
-or API key is needed. Official DeepSeek account and other providers show no tag.
+official OpenCode Go pricing docs; the host fetches and caches it (6 hours by default), with the
+bundled snapshot as a fallback. No API key is needed. Official DeepSeek account and other providers show no tag.
 
 <p align="center">
   <img src="assets/go-model-limits-tooltip.png" alt="All three plans on hover" width="720">
