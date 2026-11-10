@@ -5,8 +5,8 @@
     "en": "skyrocks DSH plugins"
   },
   "description": {
-    "zh": "输入框下方的余额、花费与套餐额度，模型列表里的 GO 月度额度，以及让模型自己查 / 切模型的工具插件。",
-    "en": "Composer-docked balance, spend and quota readouts, monthly limits in the model picker, plus a tool plugin that lets the model look up and switch models itself."
+    "zh": "输入框下方的余额、花费与套餐额度，模型列表里的 GO 月度额度，让模型自己查 / 切模型的工具，以及给会话列表补上真正的删除（回收站 + 撤销）。",
+    "en": "Composer-docked balance, spend and quota readouts, monthly limits in the model picker, model-callable switching tools, and real session deletion with a trash and undo."
   },
   "metadata": {
     "categories": {
@@ -20,6 +20,12 @@
         "title": {
           "zh": "效率工具",
           "en": "Productivity"
+        }
+      },
+      "session": {
+        "title": {
+          "zh": "会话管理",
+          "en": "Sessions"
         }
       }
     },
@@ -204,6 +210,49 @@
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-model-switcher",
             "commit": "231507dd87452f354d8526c5448e82ca9d04a0d3"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.3 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "@skyrocks/dsh-session-trash",
+      "title": {
+        "zh": "会话回收站",
+        "en": "Session trash"
+      },
+      "description": {
+        "zh": "右键会话 →「删除会话…」先移入回收站：提示条可即时撤销，设置页里能恢复或彻底删除。子会话跟着父会话一起走，不用先手工归档。",
+        "en": "Right-click a session → Delete session… moves it to the trash: undo from the toast, restore or purge under Settings. Subagent children travel with their parent, so no manual archiving first."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-session-trash",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-session-trash"
+      },
+      "metadata": {
+        "category": "session",
+        "keywords": [
+          "session",
+          "delete",
+          "trash",
+          "restore",
+          "cleanup",
+          "dsh-plugin",
+          "client-plugin"
+        ],
+        "labels": []
+      },
+      "versions": [
+        {
+          "version": "0.1.1",
+          "publishTimestamp": 1794280642,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-session-trash",
+            "commit": "de75f92d645a41bd872a6db23b2a2f9ffb22192c"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.3 <0.3.0"

@@ -1,8 +1,8 @@
 # skyrocks · DSH 插件
 
-四个给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）用的小插件：
+五个给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）用的小插件：
 两个把余额 / 额度常驻在**对话输入框下方**，一个在**模型选择列表**里标出每个 GO 模型的月度额度，
-一个把「切模型」做成**模型自己可调用的工具**。
+一个把「切模型」做成**模型自己可调用的工具**，还有一个给会话**补上真正的删除**（回收站 + 撤销）。
 
 | 插件 | 做什么 | 形态 |
 | --- | --- | --- |
@@ -10,6 +10,7 @@
 | [dsh-go-quota](https://github.com/skyrocks/dsh-go-quota) | OpenCode GO 套餐的 5 小时 / 周 / 月三窗口 | 输入框下方 dock |
 | [dsh-go-model-limits](https://github.com/skyrocks/dsh-go-model-limits) | OpenCode GO 模型的官方 Monthly limit，每个价格值独立配色 | 模型菜单标签 |
 | [dsh-model-switcher](https://github.com/skyrocks/dsh-model-switcher) | `find_models` / `switch_model` 两个工具，让模型在对话里自己查、自己切模型 | 无界面（Host 工具） |
+| [dsh-session-trash](https://github.com/skyrocks/dsh-session-trash) | 右键删除会话，先移入回收站；可即时撤销，也能在设置里恢复 / 彻底删除 | 会话右键菜单 + 设置页 |
 
 <p align="center">
   <img src="assets/deepseek-cost-dock.png" alt="输入框下方的 DeepSeek 余额与花费" width="720">
@@ -21,6 +22,10 @@
 
 <p align="center">
   <img src="assets/go-model-limits-menu.png" alt="模型选择列表里的 GO 月度额度标签" width="720">
+</p>
+
+<p align="center">
+  <img src="assets/session-trash-menu.png" alt="右键会话菜单里的「删除会话…」" width="720">
 </p>
 
 > 截图为界面示意图，实际样式跟随 DSH 主题（明 / 暗）。
@@ -42,11 +47,15 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 # 模型切换工具
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-model-switcher-0.2.1.tgz"
 
+# 会话回收站
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-session-trash-0.1.1.tgz"
+
 # 或者跟随 GitHub 默认分支
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
 dsh plugin --profile desktop add github:skyrocks/dsh-go-model-limits
 dsh plugin --profile desktop add github:skyrocks/dsh-model-switcher
+dsh plugin --profile desktop add github:skyrocks/dsh-session-trash
 ```
 
 装完**完全退出 DSH 再打开**（Host 插件只在启动时加载）。`dsh web` 用户把
@@ -54,7 +63,7 @@ dsh plugin --profile desktop add github:skyrocks/dsh-model-switcher
 
 ## 一键索引（可选）
 
-DSH 的实验性插件市场支持自定义索引。添加这个地址，就能在 Discover 里浏览并安装上面四个插件：
+DSH 的实验性插件市场支持自定义索引。添加这个地址，就能在 Discover 里浏览并安装上面五个插件：
 
 ```
 https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json   # 国内推荐
@@ -63,6 +72,16 @@ https://raw.githubusercontent.com/skyrocks/dsh-plugins/main/index.json
 
 需要先启用实验性 bundle `@deepseek-ai/dsh-experimental-plugin-market-bundle`
 （设置 →「插件」里启用），然后到 Discover 页添加索引地址。
+
+## 关于会话回收站
+
+DSH 内置只有「归档」——归档只是把会话藏起来并拦住后续运行，日志仍然占着磁盘。这个插件把删除做成
+两步：右键「删除会话…」先搬进 `~/.dsh/trash/sessions/`，提示条可即时撤销；错过撤销就去
+「设置 → 回收站」恢复或彻底删除。
+
+- **子会话跟着走**：删父会话时，它的 subagent 后代进同一个条目，恢复时一起回来。
+- **该拒就拒**：会话或子会话正在本机打开、还有运行中的工作时，会明确拒绝并列出原因。
+- **不删附件**：附件是内容寻址共享的，不随单个会话删除；回收站占的空间要「清空」才释放。
 
 ## 关于模型切换工具
 
@@ -102,6 +121,7 @@ Host 会定时抓取并缓存（默认 6 小时），不需要 API Key；抓取�
 - **数据口径清楚**：余额、累计、日 / 周 / 月直接读官网接口；只有「本轮」是按官方价目表本地估算。
 - **切模型不靠猜**：候选来自 DSH 自己的目录，多版本一律列出待选。
 - **选模型先看额度**：GO 模型行直接显示 Monthly limit，按金额分色，不用去官网翻价格表。
+- **会话真的能删干净**：先回收站后清空，删错了还能撤销；子会话不会被留成孤儿。
 
 ## 兼容性
 
@@ -111,6 +131,7 @@ Host 会定时抓取并缓存（默认 6 小时），不需要 API Key；抓取�
 | dsh-go-quota | `>= 0.2.1-rc.2 < 0.3.0` |
 | dsh-go-model-limits | `>= 0.2.1-rc.3 < 0.3.0` |
 | dsh-model-switcher | `>= 0.2.1-rc.3 < 0.3.0` |
+| dsh-session-trash | `>= 0.2.1-rc.3 < 0.3.0` |
 
 Node `>= 18`（桌面版内置 Node 24）。macOS 已验证；Windows / Linux 预期可用。
 
@@ -118,7 +139,7 @@ Node `>= 18`（桌面版内置 Node 24）。macOS 已验证；Windows / Linux �
 
 - 凭据只从当前 DSH profile 的配置读取，只在 Host 进程里用于请求官方接口。
 - 不发送遥测，不写第三方服务。
-- 四个插件都不修改会话内容；两个 dock 只读用量与账单元数据，模型切换工具只调 DSH 本来的模型目录与选择接口，额度插件只读取模型目录并在菜单里渲染标签。
+- 五个插件里只有会话回收站会改动磁盘：它把你主动删除的会话目录搬进 `~/.dsh/trash`，并在你恢复时搬回；其余四个不修改会话内容，两个 dock 只读用量与账单元数据，模型切换工具只调 DSH 本来的模型目录与选择接口，额度插件只读取模型目录并在菜单里渲染标签。
 
 ## License
 
