@@ -297,12 +297,12 @@
       },
       "versions": [
         {
-          "version": "0.1.9",
-          "publishTimestamp": 1794302361,
+          "version": "0.1.10",
+          "publishTimestamp": 1794302720,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-turn-timing",
-            "commit": "a0d512c255661d3186d3f59beb90e7940619536e"
+            "commit": "f181983461a5b688232fac7712256b9fb63b5c42"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
