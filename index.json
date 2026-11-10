@@ -273,8 +273,8 @@
         "en": "Per-turn timing"
       },
       "description": {
-        "zh": "每一轮对话结束，在末尾直接显示时间花在哪：模型 / 编码 / 构建 / 测试 / 清理。点开看小分类（等首字、思考、识图、浏览器…），识图不会被算成 0.06 秒的工具调用。零 token、不写日志。",
-        "en": "After every turn, shows where the time went: model / coding / build / test / cleanup. Expand for sub-categories; vision is attributed to the model call that reads the screenshot, not to the 0.06s tool call. Zero tokens, no logging."
+        "zh": "每一轮对话结束，在末尾直接显示时间花在哪：模型 / 编码 / 构建 / 测试 / 清理。点开看小分类（等首字、思考、识图、看文件、编辑、git、脚本…），识图不会被算成 0.06 秒的工具调用。零 token、不写日志。",
+        "en": "After every turn, shows where the time went: model / coding / build / test / cleanup. Expand for sub-categories (first token, thinking, vision, viewing, editing, git, scripts…); vision is attributed to the model call that reads the screenshot. Zero tokens, no logging."
       },
       "author": "skyrocks",
       "homepage": "https://github.com/skyrocks/dsh-turn-timing",
@@ -297,12 +297,12 @@
       },
       "versions": [
         {
-          "version": "0.1.8",
-          "publishTimestamp": 1794295058,
+          "version": "0.1.9",
+          "publishTimestamp": 1794302361,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-turn-timing",
-            "commit": "7603f24465752f8bd856b7a2a7ba7b237778f531"
+            "commit": "a0d512c255661d3186d3f59beb90e7940619536e"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
