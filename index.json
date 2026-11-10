@@ -5,8 +5,8 @@
     "en": "skyrocks DSH plugins"
   },
   "description": {
-    "zh": "输入框下方的余额、花费与套餐额度，模型列表里的 GO 月度额度，让模型自己查 / 切模型的工具，以及给会话列表补上真正的删除（回收站 + 撤销）。",
-    "en": "Composer-docked balance, spend and quota readouts, monthly limits in the model picker, model-callable switching tools, and real session deletion with a trash and undo."
+    "zh": "输入框下方的余额、花费与套餐额度，模型列表里的 GO 月度额度，让模型自己查 / 切模型的工具，给会话列表补上真正的删除（回收站 + 撤销），以及每一轮对话结束时的耗时明细。",
+    "en": "Composer-docked balance, spend and quota readouts, monthly limits in the model picker, model-callable switching tools, real session deletion with a trash and undo, and a per-turn timing readout under every reply."
   },
   "metadata": {
     "categories": {
@@ -26,6 +26,12 @@
         "title": {
           "zh": "会话管理",
           "en": "Sessions"
+        }
+      },
+      "timing": {
+        "title": {
+          "zh": "耗时分析",
+          "en": "Timing"
         }
       }
     },
@@ -256,6 +262,50 @@
           },
           "engines": {
             "dsh": ">=0.2.1-rc.3 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "@skyrocks/dsh-turn-timing",
+      "title": {
+        "zh": "每轮耗时明细",
+        "en": "Per-turn timing"
+      },
+      "description": {
+        "zh": "每一轮对话结束，在末尾直接显示时间花在哪：模型 / 编码 / 构建 / 测试 / 清理。点开看小分类（等首字、思考、识图、浏览器…），识图不会被算成 0.06 秒的工具调用。零 token、不写日志。",
+        "en": "After every turn, shows where the time went: model / coding / build / test / cleanup. Expand for sub-categories; vision is attributed to the model call that reads the screenshot, not to the 0.06s tool call. Zero tokens, no logging."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-turn-timing",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-turn-timing"
+      },
+      "metadata": {
+        "category": "timing",
+        "keywords": [
+          "timing",
+          "duration",
+          "profile",
+          "turn",
+          "latency",
+          "ttft",
+          "dsh-plugin",
+          "client-plugin"
+        ],
+        "labels": []
+      },
+      "versions": [
+        {
+          "version": "0.1.8",
+          "publishTimestamp": 1794295058,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-turn-timing",
+            "commit": "7603f24465752f8bd856b7a2a7ba7b237778f531"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
           }
         }
       ]
