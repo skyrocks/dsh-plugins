@@ -253,12 +253,12 @@
       },
       "versions": [
         {
-          "version": "0.1.1",
-          "publishTimestamp": 1794280642,
+          "version": "0.1.2",
+          "publishTimestamp": 1794297926,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-session-trash",
-            "commit": "de75f92d645a41bd872a6db23b2a2f9ffb22192c"
+            "commit": "adea1215be09ca2ecaa4318dec8dedd91efef170"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.3 <0.3.0"
