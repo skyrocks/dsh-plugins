@@ -51,7 +51,7 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-session-trash-0.1.2.tgz"
 
 # Per-turn timing
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-turn-timing-0.1.9.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-turn-timing-0.1.10.tgz"
 
 # Or track the GitHub default branch
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
