@@ -1,8 +1,9 @@
 # skyrocks · DSH 插件
 
-五个给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）用的小插件：
+六个给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）用的小插件：
 两个把余额 / 额度常驻在**对话输入框下方**，一个在**模型选择列表**里标出每个 GO 模型的月度额度，
-一个把「切模型」做成**模型自己可调用的工具**，还有一个给会话**补上真正的删除**（回收站 + 撤销）。
+一个把「切模型」做成**模型自己可调用的工具**，一个给会话**补上真正的删除**（回收站 + 撤销），
+还有一个在**每一轮对话末尾**告诉你时间花在哪。
 
 | 插件 | 做什么 | 形态 |
 | --- | --- | --- |
@@ -11,6 +12,7 @@
 | [dsh-go-model-limits](https://github.com/skyrocks/dsh-go-model-limits) | OpenCode GO 模型的官方 Monthly limit，每个价格值独立配色 | 模型菜单标签 |
 | [dsh-model-switcher](https://github.com/skyrocks/dsh-model-switcher) | `find_models` / `switch_model` 两个工具，让模型在对话里自己查、自己切模型 | 无界面（Host 工具） |
 | [dsh-session-trash](https://github.com/skyrocks/dsh-session-trash) | 右键删除会话，先移入回收站；可即时撤销，也能在设置里恢复 / 彻底删除 | 会话右键菜单 + 设置页 |
+| [dsh-turn-timing](https://github.com/skyrocks/dsh-turn-timing) | 每轮结束显示耗时去向：模型 / 编码 / 构建 / 测试 / 清理，点开看小分类 | 每轮对话末尾 |
 
 <p align="center">
   <img src="assets/deepseek-cost-dock.png" alt="输入框下方的 DeepSeek 余额与花费" width="720">
@@ -26,6 +28,10 @@
 
 <p align="center">
   <img src="assets/session-trash-menu.png" alt="右键会话菜单里的「删除会话…」" width="720">
+</p>
+
+<p align="center">
+  <img src="assets/turn-timing-collapsed.png" alt="每轮末尾的耗时摘要" width="720">
 </p>
 
 > 截图为界面示意图，实际样式跟随 DSH 主题（明 / 暗）。
@@ -50,12 +56,16 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 # 会话回收站
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-session-trash-0.1.1.tgz"
 
+# 每轮耗时明细
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-turn-timing-0.1.8.tgz"
+
 # 或者跟随 GitHub 默认分支
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
 dsh plugin --profile desktop add github:skyrocks/dsh-go-model-limits
 dsh plugin --profile desktop add github:skyrocks/dsh-model-switcher
 dsh plugin --profile desktop add github:skyrocks/dsh-session-trash
+dsh plugin --profile desktop add github:skyrocks/dsh-turn-timing
 ```
 
 装完**完全退出 DSH 再打开**（Host 插件只在启动时加载）。`dsh web` 用户把
@@ -63,7 +73,7 @@ dsh plugin --profile desktop add github:skyrocks/dsh-session-trash
 
 ## 一键索引（可选）
 
-DSH 的实验性插件市场支持自定义索引。添加这个地址，就能在 Discover 里浏览并安装上面五个插件：
+DSH 的实验性插件市场支持自定义索引。添加这个地址，就能在 Discover 里浏览并安装上面六个插件：
 
 ```
 https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json   # 国内推荐
@@ -144,3 +154,15 @@ Node `>= 18`（桌面版内置 Node 24）。macOS 已验证；Windows / Linux �
 ## License
 
 MIT
+
+## 关于每轮耗时明细
+
+用内置的「统计」页签也能看耗时，但那是另一张表，要主动切过去、还要自己找行。
+这个插件把结论放到**每一轮对话的末尾**：一行说完「耗时 2m38s │ 模型 1m50s · 编码 12s ·
+构建 20s · 测试 16s │ 慢在模型」，点开是各分类的小项。
+
+两个细节值得说：
+
+- **识图单独归类**。截图工具本身 0.06 秒，慢的是之后那次模型读图调用（中位 17 秒），
+  所以它算进「测试」，并标注与「模型」重叠——否则这一项会被显示成 0.06 秒。
+- **等你回答、等你审批不计入**。它们既不是模型也不是工具，混进来会让「慢」失真。

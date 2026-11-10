@@ -1,9 +1,9 @@
 # skyrocks · DSH plugins
 
-Five small plugins for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`):
+Six small plugins for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`):
 two dock balance and quota readouts under the composer, one labels every GO model with its monthly
-limit in the model picker, one turns "switch model" into tools the model itself can call, and one
-gives sessions **real deletion** (trash + undo).
+limit in the model picker, one turns "switch model" into tools the model itself can call, one
+gives sessions **real deletion** (trash + undo), and one reports **where each turn went**.
 
 | Plugin | What it does | Shape |
 | --- | --- | --- |
@@ -12,6 +12,7 @@ gives sessions **real deletion** (trash + undo).
 | [dsh-go-model-limits](https://github.com/skyrocks/dsh-go-model-limits) | Official monthly limit for each OpenCode GO model, one colour per price | model menu tag |
 | [dsh-model-switcher](https://github.com/skyrocks/dsh-model-switcher) | `find_models` / `switch_model` tools, so the model can look up and switch models in chat | no UI (host tools) |
 | [dsh-session-trash](https://github.com/skyrocks/dsh-session-trash) | Delete a session into the trash, undo from the toast, restore or purge under Settings | session context menu + Settings page |
+| [dsh-turn-timing](https://github.com/skyrocks/dsh-turn-timing) | Per-turn timing: model / coding / build / test / cleanup, expandable sub-categories | under each turn |
 
 <p align="center">
   <img src="assets/deepseek-cost-dock.png" alt="DeepSeek balance and spend dock" width="720">
@@ -49,12 +50,16 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 # Session trash
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-session-trash-0.1.1.tgz"
 
+# Per-turn timing
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-turn-timing-0.1.8.tgz"
+
 # Or track the GitHub default branch
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
 dsh plugin --profile desktop add github:skyrocks/dsh-go-model-limits
 dsh plugin --profile desktop add github:skyrocks/dsh-model-switcher
 dsh plugin --profile desktop add github:skyrocks/dsh-session-trash
+dsh plugin --profile desktop add github:skyrocks/dsh-turn-timing
 ```
 
 Fully quit and relaunch DSH afterwards (host plugins load at startup). For `dsh web`, use
@@ -62,7 +67,7 @@ Fully quit and relaunch DSH afterwards (host plugins load at startup). For `dsh 
 
 ## Plugin index
 
-Add this URL in the experimental plugin market's Discover tab to browse and install all five:
+Add this URL in the experimental plugin market's Discover tab to browse and install all six:
 
 ```
 https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json
