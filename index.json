@@ -5,8 +5,8 @@
     "en": "skyrocks DSH plugins"
   },
   "description": {
-    "zh": "输入框下方的余额、花费与套餐额度，模型列表里的 GO 月度额度，让模型自己查 / 切模型的工具，给会话列表补上真正的删除（回收站 + 撤销），以及每一轮对话结束时的耗时明细。",
-    "en": "Composer-docked balance, spend and quota readouts, monthly limits in the model picker, model-callable switching tools, real session deletion with a trash and undo, and a per-turn timing readout under every reply."
+    "zh": "输入框下方的余额、花费与套餐额度，模型列表里的 GO 月度额度，让模型自己查 / 切模型的工具，给会话列表补上真正的删除（回收站 + 撤销），以及每一轮对话结束时的耗时明细。，以及一个多数据源数据库查询（设置里增删改，默认只读、写入逐条审批）",
+    "en": "Composer-docked balance, spend and quota readouts, monthly limits in the model picker, model-callable switching tools, real session deletion with a trash and undo, and a per-turn timing readout under every reply., plus multi-source database queries managed in Settings, read-only by default."
   },
   "metadata": {
     "categories": {
@@ -32,6 +32,12 @@
         "title": {
           "zh": "耗时分析",
           "en": "Timing"
+        }
+      },
+      "data": {
+        "title": {
+          "zh": "数据",
+          "en": "Data"
         }
       }
     },
@@ -303,6 +309,51 @@
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-turn-timing",
             "commit": "c609a8584f719591fbef55dbbd071439dc10519d"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "@skyrocks/dsh-db",
+      "title": {
+        "zh": "数据库查询",
+        "en": "Database queries"
+      },
+      "description": {
+        "zh": "多数据源数据库查询：在设置里添加 / 编辑 / 删除数据源，可以就地测试连接；模型通过工具直接查。默认只读（语句白名单 + 数据库会话只读），写入逐条审批。支持海量 Vastbase / openGauss、PostgreSQL、MySQL、SQLite。",
+        "en": "Multi-source database queries: add, edit, and remove data sources in Settings and test them in place; the model queries them through tools. Read-only by default (statement gate + session-level read-only), every write needs approval. Vastbase / openGauss, PostgreSQL, MySQL, SQLite."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-db",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-db"
+      },
+      "metadata": {
+        "category": "data",
+        "keywords": [
+          "database",
+          "sql",
+          "sqlite",
+          "mysql",
+          "postgresql",
+          "opengauss",
+          "vastbase",
+          "dsh-plugin",
+          "host-plugin"
+        ],
+        "labels": []
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "publishTimestamp": 1794554131,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-db",
+            "commit": "e56fda69627b7013f48b15d0022f203ea497582f"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
