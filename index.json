@@ -5,8 +5,8 @@
     "en": "skyrocks DSH plugins"
   },
   "description": {
-    "zh": "输入框下方的余额、花费与套餐额度，模型列表里的 GO 月度额度，让模型自己查 / 切模型的工具，给会话列表补上真正的删除（回收站 + 撤销），以及每一轮对话结束时的耗时明细。，以及一个多数据源数据库查询（设置里增删改，默认只读、写入逐条审批）",
-    "en": "Composer-docked balance, spend and quota readouts, monthly limits in the model picker, model-callable switching tools, real session deletion with a trash and undo, and a per-turn timing readout under every reply., plus multi-source database queries managed in Settings, read-only by default."
+    "zh": "输入框下方的余额、花费与套餐额度，模型列表里的 GO 月度额度，让模型自己查 / 切模型的工具，给会话列表补上真正的删除（回收站 + 撤销），每一轮对话结束时的耗时明细，设置里的多数据源数据库查询（默认只读、写入逐条审批），以及按日 / 周 / 月统计所有会话的 token 消耗。",
+    "en": "Composer-docked balance, spend and quota readouts, monthly limits in the model picker, model-callable switching tools, real session deletion with a trash and undo, a per-turn timing readout under every reply, multi-source database queries managed in Settings (read-only by default), and day / week / month token usage across every session."
   },
   "metadata": {
     "categories": {
@@ -354,6 +354,48 @@
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-db",
             "commit": "e56fda69627b7013f48b15d0022f203ea497582f"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "@skyrocks/dsh-token-stats",
+      "title": {
+        "zh": "Token 用量",
+        "en": "Token usage"
+      },
+      "description": {
+        "zh": "在设置里按日 / 周 / 月统计所有会话（含子代理）的 token 消耗：今日 / 本周 / 本月三张卡，输入 / 缓存读写 / 输出堆叠柱状图，模型分布与会话排行。只读本地会话日志，首次打开后台回填历史并显示进度，账本存在 ~/.dsh/token-stats/usage.json。",
+        "en": "Day / week / month token usage for every session, subagents included, under Settings: Today / This week / This month cards, stacked input / cache / output bars, a per-model split, and a per-session ranking. It only reads local session logs, backfills history in the background on first open, and stores the ledger at ~/.dsh/token-stats/usage.json."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-token-stats",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-token-stats"
+      },
+      "metadata": {
+        "category": "usage",
+        "keywords": [
+          "tokens",
+          "usage",
+          "statistics",
+          "deepseek-harness",
+          "dsh-plugin",
+          "client-plugin"
+        ],
+        "labels": []
+      },
+      "versions": [
+        {
+          "version": "0.1.0",
+          "publishTimestamp": 1794561852,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-token-stats",
+            "commit": "b499e832f82200a9e6e0765ea5127a23a8239327"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"

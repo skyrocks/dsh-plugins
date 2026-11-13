@@ -1,9 +1,10 @@
 # skyrocks · DSH 插件
 
-七个给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）用的小插件：
+八个给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）用的小插件：
 两个把余额 / 额度常驻在**对话输入框下方**，一个在**模型选择列表**里标出每个 GO 模型的月度额度，
 一个把「切模型」做成**模型自己可调用的工具**，一个给会话**补上真正的删除**（回收站 + 撤销），
-还有一个在**每一轮对话末尾**告诉你时间花在哪，最后一个在**设置里维护多个数据库**，让模型直接查。
+一个在**每一轮对话末尾**告诉你时间花在哪，一个在**设置里维护多个数据库**，让模型直接查，
+最后一个在**设置里按日 / 周 / 月统计所有会话的 token 消耗**。
 
 | 插件 | 做什么 | 形态 |
 | --- | --- | --- |
@@ -14,6 +15,7 @@
 | [dsh-session-trash](https://github.com/skyrocks/dsh-session-trash) | 右键删除会话，先移入回收站；可即时撤销，也能在设置里恢复 / 彻底删除 | 会话右键菜单 + 设置页 |
 | [dsh-turn-timing](https://github.com/skyrocks/dsh-turn-timing) | 每轮结束显示耗时去向：模型 / 编码 / 构建 / 测试 / 清理，点开看小分类 | 每轮对话末尾 |
 | [dsh-db](https://github.com/skyrocks/dsh-db) | 多数据源数据库查询：设置里增删改、就地测试连接，默认只读、写入逐条审批 | 设置页 + Host 工具 |
+| [dsh-token-stats](https://github.com/skyrocks/dsh-token-stats) | 按日 / 周 / 月统计所有会话（含子代理）的 token：趋势柱、模型分布、会话排行 | 设置页 |
 
 <p align="center">
   <img src="assets/deepseek-cost-dock.png" alt="输入框下方的 DeepSeek 余额与花费" width="720">
@@ -63,6 +65,9 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 # 数据库查询
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.1.0.tgz"
 
+# Token 用量统计
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-token-stats-0.1.0.tgz"
+
 # 或者跟随 GitHub 默认分支
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
@@ -71,6 +76,7 @@ dsh plugin --profile desktop add github:skyrocks/dsh-model-switcher
 dsh plugin --profile desktop add github:skyrocks/dsh-session-trash
 dsh plugin --profile desktop add github:skyrocks/dsh-turn-timing
 dsh plugin --profile desktop add github:skyrocks/dsh-db
+dsh plugin --profile desktop add github:skyrocks/dsh-token-stats
 ```
 
 装完**完全退出 DSH 再打开**（Host 插件只在启动时加载）。`dsh web` 用户把
@@ -78,7 +84,7 @@ dsh plugin --profile desktop add github:skyrocks/dsh-db
 
 ## 一键索引（可选）
 
-DSH 的实验性插件市场支持自定义索引。添加这个地址，就能在 Discover 里浏览并安装上面七个插件：
+DSH 的实验性插件市场支持自定义索引。添加这个地址，就能在 Discover 里浏览并安装上面八个插件：
 
 ```
 https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json   # 国内推荐
@@ -127,9 +133,22 @@ Host 会定时抓取并缓存（默认 6 小时），不需要 API Key；抓取�
 
 注意：`/model` 命令弹窗不在覆盖范围内（它没有插件扩展点）；额度是“上限”，不是“本月剩余”。
 
+## 关于 Token 用量
+
+它在「设置 → Token 用量」里给你一张报表：**今日 / 本周 / 本月**三张卡，**日 / 周 / 月**的堆叠柱状图
+（输入 / 缓存读写 / 输出），模型分布和会话排行（默认前 5 个，可加载更多）。子代理会话一起算。
+
+- **数据只来自本地会话日志**：每条 `assistant/message`（以及失败重试但报了用量的尝试）都带 usage，
+  插件把它折成一本账，先回填历史、之后只做增量。不调用模型、不改会话、不追加事件。
+- **口径和 DSH 自己的统计一致**：输入只算未命中缓存的部分，缓存读写单列；fork 继承来的前缀不重复计。
+- **首次打开会回填**：几十个会话通常十几秒，有进度条，页面可以先关掉，Host 会继续。
+- **账本**：`~/.dsh/token-stats/usage.json`，只有会话 id、时间、模型和四类 token 数，没有对话正文；
+  删掉它等于清空账本，下次打开重新回填。
+
 ## 为什么值得装
 
 - **不用切页面**：余额、本轮花费、GO 三窗口都在输入框下方，悬浮看明细，点击立即刷新。
+- **token 用量一处看全**：不用翻会话，设置里直接看今天 / 这周 / 这个月用了多少、花在哪个模型和会话上。
 - **只读你已经在 DSH 里配置的 Key**：不读 `auth.json`、不扫描无关环境变量，Key 不进浏览器。
 - **零运行时依赖**：纯 ESM + 浏览器 bundle，没有原生模块，目录直装也不缺包。
 - **不干扰其它模型**：两个 dock 在当前会话不是对应路由时整条自动隐藏。
@@ -148,6 +167,7 @@ Host 会定时抓取并缓存（默认 6 小时），不需要 API Key；抓取�
 | dsh-model-switcher | `>= 0.2.1-rc.3 < 0.3.0` |
 | dsh-session-trash | `>= 0.2.1-rc.3 < 0.3.0` |
 | dsh-db | `>= 0.2.1-rc.2 < 0.3.0` |
+| dsh-token-stats | `>= 0.2.1-rc.2 < 0.3.0` |
 
 Node `>= 18`（桌面版内置 Node 24）。macOS 已验证；Windows / Linux 预期可用。
 
@@ -155,7 +175,7 @@ Node `>= 18`（桌面版内置 Node 24）。macOS 已验证；Windows / Linux �
 
 - 凭据只从当前 DSH profile 的配置读取，只在 Host 进程里用于请求官方接口。
 - 不发送遥测，不写第三方服务。
-- 六个插件里只有会话回收站和数据库插件会改动磁盘：它把你主动删除的会话目录搬进 `~/.dsh/trash`，并在你恢复时搬回；其余四个不修改会话内容，两个 dock 只读用量与账单元数据，模型切换工具只调 DSH 本来的模型目录与选择接口，额度插件只读取模型目录并在菜单里渲染标签；数据库插件只写自己的 `~/.dsh/db/sources.json`（数据源元数据），密码存 DSH 凭据库，连库请求只发往你自己配置的地址。
+- 八个插件里只有会话回收站、数据库和 Token 用量会改动磁盘：它把你主动删除的会话目录搬进 `~/.dsh/trash`，并在你恢复时搬回；其余插件不修改会话内容，两个 dock 只读用量与账单元数据，模型切换工具只调 DSH 本来的模型目录与选择接口，额度插件只读取模型目录并在菜单里渲染标签；数据库插件只写自己的 `~/.dsh/db/sources.json`（数据源元数据），密码存 DSH 凭据库，连库请求只发往你自己配置的地址；Token 用量插件只写自己的 `~/.dsh/token-stats/usage.json`（会话 id、时间、模型与 token 计数，没有正文），会话日志只读取不修改。
 
 ## License
 

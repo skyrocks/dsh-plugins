@@ -1,9 +1,11 @@
 # skyrocks · DSH plugins
 
-Seven small plugins for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`):
+Eight small plugins for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`):
 two dock balance and quota readouts under the composer, one labels every GO model with its monthly
 limit in the model picker, one turns "switch model" into tools the model itself can call, one
-gives sessions **real deletion** (trash + undo), one reports **where each turn went**, and the last one keeps **several databases** in Settings so the model can query them.
+gives sessions **real deletion** (trash + undo), one reports **where each turn went**, one keeps
+**several databases** in Settings so the model can query them, and the last one charts **token usage
+by day / week / month** across every session.
 
 | Plugin | What it does | Shape |
 | --- | --- | --- |
@@ -14,6 +16,7 @@ gives sessions **real deletion** (trash + undo), one reports **where each turn w
 | [dsh-session-trash](https://github.com/skyrocks/dsh-session-trash) | Delete a session into the trash, undo from the toast, restore or purge under Settings | session context menu + Settings page |
 | [dsh-turn-timing](https://github.com/skyrocks/dsh-turn-timing) | Per-turn timing: model / coding / build / test / cleanup, expandable sub-categories | under each turn |
 | [dsh-db](https://github.com/skyrocks/dsh-db) | Multi-source database queries: manage sources in Settings, test in place, read-only by default, every write asks | Settings page + host tools |
+| [dsh-token-stats](https://github.com/skyrocks/dsh-token-stats) | Day / week / month token usage for every session (subagents included): trend bars, model split, session ranking | Settings page |
 
 <p align="center">
   <img src="assets/deepseek-cost-dock.png" alt="DeepSeek balance and spend dock" width="720">
@@ -57,6 +60,9 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 # Database queries
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.1.0.tgz"
 
+# Token usage
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-token-stats-0.1.0.tgz"
+
 # Or track the GitHub default branch
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
@@ -65,6 +71,7 @@ dsh plugin --profile desktop add github:skyrocks/dsh-model-switcher
 dsh plugin --profile desktop add github:skyrocks/dsh-session-trash
 dsh plugin --profile desktop add github:skyrocks/dsh-turn-timing
 dsh plugin --profile desktop add github:skyrocks/dsh-db
+dsh plugin --profile desktop add github:skyrocks/dsh-token-stats
 ```
 
 Fully quit and relaunch DSH afterwards (host plugins load at startup). For `dsh web`, use
@@ -72,7 +79,7 @@ Fully quit and relaunch DSH afterwards (host plugins load at startup). For `dsh 
 
 ## Plugin index
 
-Add this URL in the experimental plugin market's Discover tab to browse and install all seven:
+Add this URL in the experimental plugin market's Discover tab to browse and install all eight:
 
 ```
 https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json
@@ -124,9 +131,26 @@ move to deepseek reasoning
 It needs DSH `>= 0.2.1-rc.3`; earlier builds exposed the model catalog through
 `apiProxy.sessions`, an interface that has since been removed.
 
+## Token usage
+
+**Settings → Token usage** is one page of numbers: **today / this week / this month** cards, a
+**day / week / month** stacked bar chart (input / cache / output), a per-model split, and a per-session
+ranking (first five rows, then **Load more**). Subagent sessions are included.
+
+- **Source is the local session logs**: every `assistant/message` (plus a failed or retried
+  `assistant/attempt` that still reported usage) carries usage. The plugin folds it into one ledger,
+  backfills history once, then updates incrementally. No model calls, no session writes, no events.
+- **Same accounting as DSH itself**: cache reads and writes are counted separately from uncached
+  input; a fork's inherited prefix is never counted twice.
+- **The first open backfills**: tens of sessions usually take a few seconds, with visible progress;
+  the page can be closed while the host keeps scanning.
+- **Ledger**: `~/.dsh/token-stats/usage.json` holds session ids, timestamps, models, and the four token
+  counts — no conversation text. Delete it to reset; the next open backfills again.
+
 ## Why
 
 - Quota and spend live under the composer — no settings page, no dashboard.
+- Token usage lives in one Settings page: today / this week / this month, by model and by session.
 - Reads only the key already configured in your DSH profile; never sent to the browser.
 - Zero runtime dependencies, no native modules.
 - The two docks hide themselves when the session is not on the matching provider.
@@ -144,6 +168,7 @@ It needs DSH `>= 0.2.1-rc.3`; earlier builds exposed the model catalog through
 | dsh-model-switcher | `>= 0.2.1-rc.3 < 0.3.0` |
 | dsh-session-trash | `>= 0.2.1-rc.3 < 0.3.0` |
 | dsh-db | `>= 0.2.1-rc.2 < 0.3.0` |
+| dsh-token-stats | `>= 0.2.1-rc.2 < 0.3.0` |
 
 Node `>= 18` (the desktop build ships Node 24). Verified on macOS; Windows and Linux expected
 to work.
@@ -152,10 +177,14 @@ to work.
 
 - Credentials are read from the current DSH profile and used only in the host process.
 - No telemetry, no third-party services.
-- Only the session-trash plugin and the database plugin touch disk: it moves a session directory you asked to delete into
-  `~/.dsh/trash` and moves it back when you restore. The other four do not modify conversation
-  content: the two docks read usage metadata, the switcher only calls DSH's own model catalog and
-  selection interfaces, and the limits plugin only reads the catalog and renders labels in the menu. The database plugin writes only its own `~/.dsh/db/sources.json` (data-source metadata), keeps passwords in the DSH credential store, and connects only to the addresses you configure.
+- Only the session-trash, database, and token-usage plugins touch disk. Session trash moves a session
+  directory you asked to delete into `~/.dsh/trash` and moves it back when you restore. The database
+  plugin writes only its own `~/.dsh/db/sources.json` (data-source metadata), keeps passwords in the
+  DSH credential store, and connects only to the addresses you configure. The token-usage plugin writes
+  only its own `~/.dsh/token-stats/usage.json` (session ids, timestamps, models, token counts — no text);
+  it reads session logs without modifying them. The other plugins do not modify conversation content:
+  the two docks read usage metadata, the switcher only calls DSH's own model catalog and selection
+  interfaces, and the limits plugin only reads the catalog and renders labels in the menu.
 
 ## License
 
