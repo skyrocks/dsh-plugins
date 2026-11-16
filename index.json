@@ -93,7 +93,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-deepseek-cost",
-            "commit": "83d54eacdfde9072f5b3137a602ed233bda17baf"
+            "commit": "ad9931a5c3fc0de8f5972c1cbe7c0e4a4a2afa0e"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
@@ -136,7 +136,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-go-quota",
-            "commit": "13da18aa5ec462c3fe2718bb130e311d8266bc62"
+            "commit": "a3bbe58318191df0b82a709bdc132e0d530fd114"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
@@ -180,7 +180,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-go-model-limits",
-            "commit": "fe40180b2dd04f9f0375ae1c3c007aa8f05d1f0a"
+            "commit": "ea57741782cc38d227e4f4054fbf6d9ab3e7efcb"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.3 <0.3.0"
@@ -221,7 +221,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-model-switcher",
-            "commit": "231507dd87452f354d8526c5448e82ca9d04a0d3"
+            "commit": "5d5276815ad786573b48986ab5636c06c4204f44"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.3 <0.3.0"
@@ -308,7 +308,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-turn-timing",
-            "commit": "c609a8584f719591fbef55dbbd071439dc10519d"
+            "commit": "97a859dbf6eff42cc809fcc5e0e334834a32faf5"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
@@ -353,7 +353,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-db",
-            "commit": "42a15b0"
+            "commit": "42a15b0473096f37c1be0d5e7f54d32510d08eb6"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
@@ -395,7 +395,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-token-stats",
-            "commit": "b499e832f82200a9e6e0765ea5127a23a8239327"
+            "commit": "237ce0163dcc50c2d1b55edc89a595cecdb1b285"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
