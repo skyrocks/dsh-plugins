@@ -264,7 +264,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-session-trash",
-            "commit": "d7d7756587053faae026c3248e1f1db24884b9d2"
+            "commit": "aad5fc2182caeb2ce4f9da50e72345fa93994e1c"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.3 <0.3.0"
