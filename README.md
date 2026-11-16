@@ -57,7 +57,7 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-model-switcher-0.2.1.tgz"
 
 # 会话回收站
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-session-trash-0.1.2.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-session-trash-0.1.3.tgz"
 
 # 每轮耗时明细
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-turn-timing-0.1.11.tgz"
