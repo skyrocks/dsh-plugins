@@ -1,10 +1,11 @@
 # skyrocks · DSH 插件
 
-八个给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）用的小插件：
+九个给 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（`dsh`）用的小插件：
 两个把余额 / 额度常驻在**对话输入框下方**，一个在**模型选择列表**里标出每个 GO 模型的月度额度，
 一个把「切模型」做成**模型自己可调用的工具**，一个给会话**补上真正的删除**（回收站 + 撤销），
 一个在**每一轮对话末尾**告诉你时间花在哪，一个在**设置里维护多个数据库**，让模型直接查，
-最后一个在**设置里按日 / 周 / 月统计所有会话的 token 消耗**。
+一个在**设置里按日 / 周 / 月统计所有会话的 token 消耗**，
+最后一个**定时整理你的邮箱**，每轮给一份可回看的报告。
 
 | 插件 | 做什么 | 形态 |
 | --- | --- | --- |
@@ -16,6 +17,7 @@
 | [dsh-turn-timing](https://github.com/skyrocks/dsh-turn-timing) | 每轮结束显示耗时去向：模型 / 编码 / 构建 / 测试 / 清理，点开看小分类 | 每轮对话末尾 |
 | [dsh-db](https://github.com/skyrocks/dsh-db) | 多数据源数据库查询（含达梦 DM8）：设置里增删改、就地测试连接，默认只读、写入逐条审批 | 设置页 + Host 工具 |
 | [dsh-token-stats](https://github.com/skyrocks/dsh-token-stats) | 按日 / 周 / 月统计所有会话（含子代理）的 token：趋势柱、模型分布、会话排行 | 设置页 |
+| [dsh-mail-digest](https://github.com/skyrocks/dsh-mail-digest) | 定时抓取 IMAP 邮箱，逐封打标签写摘要，按线程梳理时间轴并总结，每轮出一份可回看的报告 | 侧边栏面板 + 报告页 |
 
 <p align="center">
   <img src="assets/deepseek-cost-dock.png" alt="输入框下方的 DeepSeek 余额与花费" width="720">
@@ -68,6 +70,9 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 # Token 用量统计
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-token-stats-0.1.0.tgz"
 
+# 邮件整理
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-mail-digest-0.4.2.tgz"
+
 # 或者跟随 GitHub 默认分支
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
@@ -77,6 +82,7 @@ dsh plugin --profile desktop add github:skyrocks/dsh-session-trash
 dsh plugin --profile desktop add github:skyrocks/dsh-turn-timing
 dsh plugin --profile desktop add github:skyrocks/dsh-db
 dsh plugin --profile desktop add github:skyrocks/dsh-token-stats
+dsh plugin --profile desktop add github:skyrocks/dsh-mail-digest
 ```
 
 装完**完全退出 DSH 再打开**（Host 插件只在启动时加载）。`dsh web` 用户把
@@ -84,7 +90,7 @@ dsh plugin --profile desktop add github:skyrocks/dsh-token-stats
 
 ## 一键索引（可选）
 
-DSH 的实验性插件市场支持自定义索引。添加这个地址，就能在 Discover 里浏览并安装上面八个插件：
+DSH 的实验性插件市场支持自定义索引。添加这个地址，就能在 Discover 里浏览并安装上面九个插件：
 
 ```
 https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json   # 国内推荐
@@ -175,7 +181,7 @@ Node `>= 18`（桌面版内置 Node 24）。macOS 已验证；Windows / Linux �
 
 - 凭据只从当前 DSH profile 的配置读取，只在 Host 进程里用于请求官方接口。
 - 不发送遥测，不写第三方服务。
-- 八个插件里只有会话回收站、数据库和 Token 用量会改动磁盘：它把你主动删除的会话目录搬进 `~/.dsh/trash`，并在你恢复时搬回；其余插件不修改会话内容，两个 dock 只读用量与账单元数据，模型切换工具只调 DSH 本来的模型目录与选择接口，额度插件只读取模型目录并在菜单里渲染标签；数据库插件只写自己的 `~/.dsh/db/sources.json`（数据源元数据），密码存 DSH 凭据库，连库请求只发往你自己配置的地址；Token 用量插件只写自己的 `~/.dsh/token-stats/usage.json`（会话 id、时间、模型与 token 计数，没有正文），会话日志只读取不修改。
+- 九个插件里只有会话回收站、数据库、Token 用量和邮件整理会改动磁盘：它把你主动删除的会话目录搬进 `~/.dsh/trash`，并在你恢复时搬回；其余插件不修改会话内容，两个 dock 只读用量与账单元数据，模型切换工具只调 DSH 本来的模型目录与选择接口，额度插件只读取模型目录并在菜单里渲染标签；数据库插件只写自己的 `~/.dsh/db/sources.json`（数据源元数据），密码存 DSH 凭据库，连库请求只发往你自己配置的地址；Token 用量插件只写自己的 `~/.dsh/token-stats/usage.json`（会话 id、时间、模型与 token 计数，没有正文）；邮件整理只写自己的配置与本地报告文件，IMAP 凭据存 DSH 凭据库，只连你自己配置的邮箱；会话日志只读取不修改。
 
 ## License
 

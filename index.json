@@ -39,6 +39,12 @@
           "zh": "数据",
           "en": "Data"
         }
+      },
+      "mail": {
+        "title": {
+          "zh": "邮件",
+          "en": "Mail"
+        }
       }
     },
     "labels": {
@@ -355,7 +361,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-db",
-            "commit": "789a911"
+            "commit": "789a911d39c56a2db28ce447cb3ea6e182583c5a"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
@@ -401,6 +407,46 @@
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "@skyrocks/dsh-mail-digest",
+      "title": {
+        "zh": "邮件整理",
+        "en": "Mail digest"
+      },
+      "description": {
+        "zh": "定时抓取 IMAP 邮箱，逐封打标签写摘要，按线程梳理时间轴并总结；每轮生成可回看、可删除的报告，跑完在 DSH 里弹通知。",
+        "en": "Scheduled IMAP triage: tags each message, threads conversations into a timeline summary, and produces a reviewable, deletable report with a DSH notification."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-mail-digest",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-mail-digest"
+      },
+      "metadata": {
+        "category": "mail",
+        "keywords": [
+          "email",
+          "imap",
+          "digest",
+          "inbox"
+        ],
+        "labels": []
+      },
+      "versions": [
+        {
+          "version": "0.4.2",
+          "publishTimestamp": 1794902607,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-mail-digest",
+            "commit": "e5e18308e3be6e64ed85a197d098016f203e3a43"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.2 <0.3.0"
           }
         }
       ]

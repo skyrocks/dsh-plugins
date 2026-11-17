@@ -17,6 +17,7 @@ by day / week / month** across every session.
 | [dsh-turn-timing](https://github.com/skyrocks/dsh-turn-timing) | Per-turn timing: model / coding / build / test / cleanup, expandable sub-categories | under each turn |
 | [dsh-db](https://github.com/skyrocks/dsh-db) | Multi-source database queries: manage sources in Settings, test in place, read-only by default, every write asks | Settings page + host tools |
 | [dsh-token-stats](https://github.com/skyrocks/dsh-token-stats) | Day / week / month token usage for every session (subagents included): trend bars, model split, session ranking | Settings page |
+| [dsh-mail-digest](https://github.com/skyrocks/dsh-mail-digest) | Scheduled IMAP triage: tags each message, threads conversations into a timeline summary, and writes a reviewable report per run | sidebar panel + report page |
 
 <p align="center">
   <img src="assets/deepseek-cost-dock.png" alt="DeepSeek balance and spend dock" width="720">
@@ -63,6 +64,9 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 # Token usage
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-token-stats-0.1.0.tgz"
 
+# Mail digest
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-mail-digest-0.4.2.tgz"
+
 # Or track the GitHub default branch
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
 dsh plugin --profile desktop add github:skyrocks/dsh-go-quota
@@ -79,7 +83,7 @@ Fully quit and relaunch DSH afterwards (host plugins load at startup). For `dsh 
 
 ## Plugin index
 
-Add this URL in the experimental plugin market's Discover tab to browse and install all eight:
+Add this URL in the experimental plugin market's Discover tab to browse and install all nine:
 
 ```
 https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/index.json
@@ -177,12 +181,12 @@ to work.
 
 - Credentials are read from the current DSH profile and used only in the host process.
 - No telemetry, no third-party services.
-- Only the session-trash, database, and token-usage plugins touch disk. Session trash moves a session
+- Only the session-trash, database, token-usage, and mail-digest plugins touch disk. Session trash moves a session
   directory you asked to delete into `~/.dsh/trash` and moves it back when you restore. The database
   plugin writes only its own `~/.dsh/db/sources.json` (data-source metadata), keeps passwords in the
   DSH credential store, and connects only to the addresses you configure. The token-usage plugin writes
   only its own `~/.dsh/token-stats/usage.json` (session ids, timestamps, models, token counts — no text);
-  it reads session logs without modifying them. The other plugins do not modify conversation content:
+  it reads session logs without modifying them. The mail-digest plugin writes only its own settings and local report files, keeps IMAP credentials in the DSH credential store, and connects only to the mailboxes you configure. The other plugins do not modify conversation content:
   the two docks read usage metadata, the switcher only calls DSH's own model catalog and selection
   interfaces, and the limits plugin only reads the catalog and renders labels in the menu.
 
