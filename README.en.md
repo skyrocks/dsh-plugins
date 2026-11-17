@@ -58,7 +58,7 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-turn-timing-0.1.11.tgz"
 
 # Database queries
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.1.2.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.2.0.tgz"
 
 # Token usage
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-token-stats-0.1.0.tgz"

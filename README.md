@@ -14,7 +14,7 @@
 | [dsh-model-switcher](https://github.com/skyrocks/dsh-model-switcher) | `find_models` / `switch_model` 两个工具，让模型在对话里自己查、自己切模型 | 无界面（Host 工具） |
 | [dsh-session-trash](https://github.com/skyrocks/dsh-session-trash) | 右键删除会话，先移入回收站；可即时撤销，也能在设置里恢复 / 彻底删除 | 会话右键菜单 + 设置页 |
 | [dsh-turn-timing](https://github.com/skyrocks/dsh-turn-timing) | 每轮结束显示耗时去向：模型 / 编码 / 构建 / 测试 / 清理，点开看小分类 | 每轮对话末尾 |
-| [dsh-db](https://github.com/skyrocks/dsh-db) | 多数据源数据库查询：设置里增删改、就地测试连接，默认只读、写入逐条审批 | 设置页 + Host 工具 |
+| [dsh-db](https://github.com/skyrocks/dsh-db) | 多数据源数据库查询（含达梦 DM8）：设置里增删改、就地测试连接，默认只读、写入逐条审批 | 设置页 + Host 工具 |
 | [dsh-token-stats](https://github.com/skyrocks/dsh-token-stats) | 按日 / 周 / 月统计所有会话（含子代理）的 token：趋势柱、模型分布、会话排行 | 设置页 |
 
 <p align="center">
@@ -63,7 +63,7 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-turn-timing-0.1.11.tgz"
 
 # 数据库查询
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.1.2.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.2.0.tgz"
 
 # Token 用量统计
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-token-stats-0.1.0.tgz"

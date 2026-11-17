@@ -323,8 +323,8 @@
         "en": "Database queries"
       },
       "description": {
-        "zh": "多数据源数据库查询：在设置里添加 / 编辑 / 删除数据源，可以就地测试连接；模型通过工具直接查。默认只读（语句白名单 + 数据库会话只读），写入逐条审批。支持海量 Vastbase / openGauss、PostgreSQL、MySQL、SQLite。",
-        "en": "Multi-source database queries: add, edit, and remove data sources in Settings and test them in place; the model queries them through tools. Read-only by default (statement gate + session-level read-only), every write needs approval. Vastbase / openGauss, PostgreSQL, MySQL, SQLite."
+        "zh": "多数据源数据库查询：在设置里添加 / 编辑 / 删除数据源，可以就地测试连接；模型通过工具直接查。默认只读（语句白名单 + 数据库会话只读），写入逐条审批。支持海量 Vastbase / openGauss、达梦 DM8、PostgreSQL、MySQL、SQLite。",
+        "en": "Multi-source database queries: add, edit, and remove data sources in Settings and test them in place; the model queries them through tools. Read-only by default (statement gate + session-level read-only), every write needs approval. Vastbase / openGauss, Dameng DM8, PostgreSQL, MySQL, SQLite."
       },
       "author": "skyrocks",
       "homepage": "https://github.com/skyrocks/dsh-db",
@@ -342,18 +342,20 @@
           "opengauss",
           "vastbase",
           "dsh-plugin",
-          "host-plugin"
+          "host-plugin",
+          "dameng",
+          "dm8"
         ],
         "labels": []
       },
       "versions": [
         {
-          "version": "0.1.2",
-          "publishTimestamp": 1794801340,
+          "version": "0.2.0",
+          "publishTimestamp": 1794898587,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-db",
-            "commit": "42a15b0473096f37c1be0d5e7f54d32510d08eb6"
+            "commit": "789a911"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
