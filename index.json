@@ -356,12 +356,12 @@
       },
       "versions": [
         {
-          "version": "0.2.1",
-          "publishTimestamp": 1794910619,
+          "version": "0.2.2",
+          "publishTimestamp": 1794968395,
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-db",
-            "commit": "c7a6c52"
+            "commit": "1e40be8"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
