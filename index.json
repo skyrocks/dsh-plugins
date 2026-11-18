@@ -94,6 +94,18 @@
       },
       "versions": [
         {
+          "version": "0.2.5",
+          "publishTimestamp": 1794974046,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-deepseek-cost",
+            "commit": "2835b855d00685f29d5e2514ff471c4cbd89d01d"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        },
+        {
           "version": "0.2.4",
           "publishTimestamp": 1794971760,
           "source": {
@@ -149,6 +161,18 @@
       },
       "versions": [
         {
+          "version": "0.1.10",
+          "publishTimestamp": 1794974046,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-go-quota",
+            "commit": "dc4682c282c6b74603dc769ef4e43e8854744ec0"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        },
+        {
           "version": "0.1.9",
           "publishTimestamp": 1793965907,
           "source": {
@@ -193,6 +217,18 @@
       },
       "versions": [
         {
+          "version": "0.1.3",
+          "publishTimestamp": 1794974046,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-go-model-limits",
+            "commit": "6463b27e7d40532ba4abc366e8a93e73593eb7a1"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.3 <0.3.0"
+          }
+        },
+        {
           "version": "0.1.2",
           "publishTimestamp": 1794195266,
           "source": {
@@ -233,6 +269,18 @@
         "labels": []
       },
       "versions": [
+        {
+          "version": "0.2.2",
+          "publishTimestamp": 1794974046,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-model-switcher",
+            "commit": "2b747d375b27f78b82f66a34c94c27e148f0a0a3"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.3 <0.3.0"
+          }
+        },
         {
           "version": "0.2.1",
           "publishTimestamp": 1793965907,
@@ -277,6 +325,18 @@
       },
       "versions": [
         {
+          "version": "0.1.4",
+          "publishTimestamp": 1794974046,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-session-trash",
+            "commit": "21b887c3a6390b4f42479125c0b6e75e5ff7868b"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.3 <0.3.0"
+          }
+        },
+        {
           "version": "0.1.3",
           "publishTimestamp": 1794800166,
           "source": {
@@ -320,6 +380,18 @@
         "labels": []
       },
       "versions": [
+        {
+          "version": "0.1.12",
+          "publishTimestamp": 1794974046,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-turn-timing",
+            "commit": "296c9e6a1d0a969e1710f5cd86b94f03ee20123c"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        },
         {
           "version": "0.1.11",
           "publishTimestamp": 1794302882,
