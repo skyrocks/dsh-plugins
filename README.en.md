@@ -41,7 +41,7 @@ In the desktop app: Settings → Plugins → Add plugin, paste one of the specs 
 
 ```sh
 # DeepSeek balance & spend (CDN, reliable behind firewalls)
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-deepseek-cost-0.2.3.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-deepseek-cost-0.2.4.tgz"
 
 # OpenCode GO quota
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-go-quota-0.1.9.tgz"
