@@ -183,6 +183,28 @@ Node `>= 18`（桌面版内置 Node 24）。macOS 已验证；Windows / Linux �
 - 不发送遥测，不写第三方服务。
 - 九个插件里只有会话回收站、数据库、Token 用量和邮件整理会改动磁盘：它把你主动删除的会话目录搬进 `~/.dsh/trash`，并在你恢复时搬回；其余插件不修改会话内容，两个 dock 只读用量与账单元数据，模型切换工具只调 DSH 本来的模型目录与选择接口，额度插件只读取模型目录并在菜单里渲染标签；数据库插件只写自己的 `~/.dsh/db/sources.json`（数据源元数据），密码存 DSH 凭据库，连库请求只发往你自己配置的地址；Token 用量插件只写自己的 `~/.dsh/token-stats/usage.json`（会话 id、时间、模型与 token 计数，没有正文）；邮件整理只写自己的配置与本地报告文件，IMAP 凭据存 DSH 凭据库，只连你自己配置的邮箱；会话日志只读取不修改。
 
+## 维护（本仓库）
+
+`index.json` 必须符合插件市场的 format 1。**任何一处不合规，DSH 会拒绝整份索引**——
+Discover 里所有插件会一起消失，不只是出错的那个。最容易犯的错是把 `source.commit`
+写成 7 位短 sha（format 1 要求 40 位小写 hex）。
+
+```sh
+node scripts/check-index.mjs          # 校验工作区里的 index.json
+node scripts/check-index.mjs --staged # 校验暂存区里的版本
+```
+
+仓库自带 pre-commit 钩子：`index.json` 进暂存区时自动校验，不通过就拒绝提交。
+**新 clone 后启用一次**：
+
+```sh
+git config core.hooksPath scripts/hooks
+```
+
+钩子优先调用 DSH 自己的 `parseMarketIndex`（本机存在 `.tools/pmi` 时），
+拿不到就退回 `scripts/check-index.mjs` 里的内置等价检查，零依赖。
+确实要绕过：`git commit --no-verify`。
+
 ## License
 
 MIT

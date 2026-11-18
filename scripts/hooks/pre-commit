@@ -1,0 +1,10 @@
+#!/bin/sh
+# 提交前校验 index.json（插件市场 format 1）。
+# 生效方式（本仓库已配置）：git config core.hooksPath scripts/hooks
+# 只想看结果不提交：node scripts/check-index.mjs
+set -e
+
+staged=$(git diff --cached --name-only --diff-filter=ACM | grep -x 'index.json' || true)
+[ -z "$staged" ] && exit 0
+
+exec node scripts/check-index.mjs --staged

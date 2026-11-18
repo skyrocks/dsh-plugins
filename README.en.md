@@ -190,6 +190,28 @@ to work.
   the two docks read usage metadata, the switcher only calls DSH's own model catalog and selection
   interfaces, and the limits plugin only reads the catalog and renders labels in the menu.
 
+## Maintaining this repo
+
+`index.json` must satisfy the plugin market's format 1. **One invalid entry makes DSH reject the
+whole index** — every plugin disappears from Discover, not just the broken one. The usual mistake is
+a 7-character short sha in `source.commit`; format 1 requires the full 40 lowercase hex digits.
+
+```sh
+node scripts/check-index.mjs          # check the working copy
+node scripts/check-index.mjs --staged # check the staged version
+```
+
+A `pre-commit` hook runs this whenever `index.json` is staged and refuses the commit on failure.
+**Enable it once after cloning**:
+
+```sh
+git config core.hooksPath scripts/hooks
+```
+
+The hook prefers DSH's own `parseMarketIndex` (when `.tools/pmi` exists locally) and otherwise falls
+back to the dependency-free checker in `scripts/check-index.mjs`. To bypass deliberately:
+`git commit --no-verify`.
+
 ## License
 
 MIT
