@@ -361,7 +361,7 @@
           "source": {
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-db",
-            "commit": "1e40be8"
+            "commit": "1e40be8303caaa6bd3f6175cb999cb1ab4769cad"
           },
           "engines": {
             "dsh": ">=0.2.1-rc.2 <0.3.0"
