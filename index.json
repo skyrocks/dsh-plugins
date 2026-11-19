@@ -482,6 +482,18 @@
       },
       "versions": [
         {
+          "version": "0.1.1",
+          "publishTimestamp": 1795056039,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-token-stats",
+            "commit": "2e01cb6276dc3c940cb755bae6971ec24ac1a5d4"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        },
+        {
           "version": "0.1.0",
           "publishTimestamp": 1794561852,
           "source": {
@@ -521,6 +533,18 @@
         "labels": []
       },
       "versions": [
+        {
+          "version": "0.4.3",
+          "publishTimestamp": 1795056039,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-mail-digest",
+            "commit": "c3098f56dcb7006c0722ed39fda77feb121a508b"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.2 <0.3.0"
+          }
+        },
         {
           "version": "0.4.2",
           "publishTimestamp": 1794902607,
