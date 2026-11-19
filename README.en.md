@@ -53,19 +53,19 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-model-switcher-0.2.2.tgz"
 
 # Session trash
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-session-trash-0.1.5.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-session-trash-0.1.6.tgz"
 
 # Per-turn timing
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-turn-timing-0.1.12.tgz"
 
 # Database queries
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.2.2.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.2.3.tgz"
 
 # Token usage
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-token-stats-0.1.1.tgz"
 
 # Mail digest
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-mail-digest-0.4.3.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-mail-digest-0.4.4.tgz"
 
 # Or track the GitHub default branch
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost

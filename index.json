@@ -325,6 +325,18 @@
       },
       "versions": [
         {
+          "version": "0.1.6",
+          "publishTimestamp": 1795075731,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-session-trash",
+            "commit": "38a5677e9d26eddc4156285262557ae75254bd3e"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.3 <0.3.0"
+          }
+        },
+        {
           "version": "0.1.5",
           "publishTimestamp": 1794974352,
           "source": {
@@ -440,6 +452,18 @@
       },
       "versions": [
         {
+          "version": "0.2.3",
+          "publishTimestamp": 1795075731,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-db",
+            "commit": "abb7f7260c4a0846228d5dc2c0cce6ca1d51a520"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        },
+        {
           "version": "0.2.2",
           "publishTimestamp": 1794968395,
           "source": {
@@ -533,6 +557,18 @@
         "labels": []
       },
       "versions": [
+        {
+          "version": "0.4.4",
+          "publishTimestamp": 1795075731,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-mail-digest",
+            "commit": "b261a270455c670ca9de8b4010424011af1a184f"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.2 <0.3.0"
+          }
+        },
         {
           "version": "0.4.3",
           "publishTimestamp": 1795056039,
