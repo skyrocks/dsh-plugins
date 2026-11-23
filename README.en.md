@@ -1,11 +1,12 @@
 # skyrocks · DSH plugins
 
-Eight small plugins for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`):
+Ten small plugins for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (`dsh`):
 two dock balance and quota readouts under the composer, one labels every GO model with its monthly
 limit in the model picker, one turns "switch model" into tools the model itself can call, one
 gives sessions **real deletion** (trash + undo), one reports **where each turn went**, one keeps
-**several databases** in Settings so the model can query them, and the last one charts **token usage
-by day / week / month** across every session.
+**several databases** in Settings so the model can query them, one charts **token usage by day /
+week / month** across every session, one triages your **mailbox** on a schedule, and one writes a
+daily **news digest** from the categories you pick — both with reviewable reports.
 
 | Plugin | What it does | Shape |
 | --- | --- | --- |
@@ -17,6 +18,7 @@ by day / week / month** across every session.
 | [dsh-turn-timing](https://github.com/skyrocks/dsh-turn-timing) | Per-turn timing: model / coding / build / test / cleanup, expandable sub-categories | under each turn |
 | [dsh-db](https://github.com/skyrocks/dsh-db) | Multi-source database queries: manage sources in Settings, test in place, read-only by default, every write asks | Settings page + host tools |
 | [dsh-token-stats](https://github.com/skyrocks/dsh-token-stats) | Day / week / month token usage for every session (subagents included): trend bars, model split, session ranking | Settings page |
+| [dsh-news-digest](https://github.com/skyrocks/dsh-news-digest) | Searches live news daily for the categories you pick and writes a reviewable digest | Side panel + report page |
 | [dsh-mail-digest](https://github.com/skyrocks/dsh-mail-digest) | Scheduled IMAP triage: tags each message, threads conversations into a timeline summary, and writes a reviewable report per run | sidebar panel + report page |
 
 <p align="center">
@@ -59,13 +61,16 @@ dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugi
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-turn-timing-0.1.12.tgz"
 
 # Database queries
-dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.2.3.tgz"
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-db-0.2.4.tgz"
 
 # Token usage
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-token-stats-0.1.1.tgz"
 
 # Mail digest
 dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-mail-digest-0.4.4.tgz"
+
+# News digest
+dsh plugin --profile desktop add "https://cdn.jsdelivr.net/gh/skyrocks/dsh-plugins@main/dist/skyrocks-dsh-news-digest-0.1.1.tgz"
 
 # Or track the GitHub default branch
 dsh plugin --profile desktop add github:skyrocks/dsh-deepseek-cost
@@ -173,6 +178,8 @@ ranking (first five rows, then **Load more**). Subagent sessions are included.
 | dsh-session-trash | `>= 0.2.1-rc.3 < 0.3.0` |
 | dsh-db | `>= 0.2.1-rc.2 < 0.3.0` |
 | dsh-token-stats | `>= 0.2.1-rc.2 < 0.3.0` |
+| dsh-mail-digest | `>= 0.2.2-rc.2 < 0.3.0` |
+| dsh-news-digest | `>= 0.2.2-rc.2 < 0.3.0` |
 
 Node `>= 18` (the desktop build ships Node 24). Verified on macOS; Windows and Linux expected
 to work.

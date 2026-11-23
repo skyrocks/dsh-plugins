@@ -45,6 +45,12 @@
           "zh": "邮件",
           "en": "Mail"
         }
+      },
+      "news": {
+        "title": {
+          "zh": "新闻",
+          "en": "News"
+        }
       }
     },
     "labels": {
@@ -452,6 +458,18 @@
       },
       "versions": [
         {
+          "version": "0.2.4",
+          "publishTimestamp": 1795399656,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-db",
+            "commit": "a1d04e5ad29f6e39d421fb90046112d61a4a560f"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        },
+        {
           "version": "0.2.3",
           "publishTimestamp": 1795075731,
           "source": {
@@ -588,6 +606,46 @@
             "type": "git",
             "url": "https://github.com/skyrocks/dsh-mail-digest",
             "commit": "e5e18308e3be6e64ed85a197d098016f203e3a43"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.2 <0.3.0"
+          }
+        }
+      ]
+    },
+    {
+      "name": "@skyrocks/dsh-news-digest",
+      "title": {
+        "zh": "新闻日报",
+        "en": "News digest"
+      },
+      "description": {
+        "zh": "按你勾选的类别每天搜一次实时新闻，出一份可回看的日报；定时之外，每天上午第一次用 DSH 时也会补一次。",
+        "en": "Searches live news once a day for the categories you pick and writes a reviewable daily digest; also catches up on the first morning use of DSH."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-news-digest",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-news-digest"
+      },
+      "metadata": {
+        "category": "news",
+        "keywords": [
+          "news",
+          "digest",
+          "daily",
+          "web-search"
+        ],
+        "labels": []
+      },
+      "versions": [
+        {
+          "version": "0.1.1",
+          "publishTimestamp": 1795399719,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-news-digest",
+            "commit": "90b13d572e9025406a1a3e01034c7ac2acc8d921"
           },
           "engines": {
             "dsh": ">=0.2.2-rc.2 <0.3.0"
