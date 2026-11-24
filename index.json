@@ -576,6 +576,18 @@
       },
       "versions": [
         {
+          "version": "0.4.5",
+          "publishTimestamp": 1795487553,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-mail-digest",
+            "commit": "adca63ea90a557b09fe84b119013476c640bf3a2"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.2 <0.3.0"
+          }
+        },
+        {
           "version": "0.4.4",
           "publishTimestamp": 1795075731,
           "source": {
