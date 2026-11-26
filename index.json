@@ -652,6 +652,18 @@
       },
       "versions": [
         {
+          "version": "0.1.2",
+          "publishTimestamp": 1795680113,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-news-digest",
+            "commit": "f69c8a742343667a85cf1c498c60c9879eb05912"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.2 <0.3.0"
+          }
+        },
+        {
           "version": "0.1.1",
           "publishTimestamp": 1795399719,
           "source": {
