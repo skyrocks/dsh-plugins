@@ -676,6 +676,48 @@
           }
         }
       ]
+    },
+    {
+      "name": "@skyrocks/dsh-session-handoff",
+      "title": {
+        "zh": "会话交接",
+        "en": "Session handoff"
+      },
+      "description": {
+        "zh": "在助手回复的工具条里点一下，把最近 3 轮原文和更早内容的摘要投递到任意工作区的会话继续执行；目标会话先复述任务再等你确认。",
+        "en": "One click under any assistant reply sends the last 3 turns plus a summary of earlier context to a session in any workspace; the target restates the task before starting."
+      },
+      "author": "skyrocks",
+      "homepage": "https://github.com/skyrocks/dsh-session-handoff",
+      "repository": {
+        "url": "https://github.com/skyrocks/dsh-session-handoff"
+      },
+      "metadata": {
+        "category": "session",
+        "keywords": [
+          "session",
+          "handoff",
+          "transfer",
+          "context",
+          "workspace",
+          "client-plugin"
+        ],
+        "labels": []
+      },
+      "versions": [
+        {
+          "version": "0.1.10",
+          "publishTimestamp": 1795761351,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-session-handoff",
+            "commit": "641905bfdbaac3e708cd97eff4e86ca5f9bd3c8b"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.5 <0.3.0"
+          }
+        }
+      ]
     }
   ]
 }
