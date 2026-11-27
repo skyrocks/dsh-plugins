@@ -458,6 +458,18 @@
       },
       "versions": [
         {
+          "version": "0.2.5",
+          "publishTimestamp": 1795761665,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/skyrocks/dsh-db",
+            "commit": "0a16381ad173f293df58c8a5002a1cd72ab6dae3"
+          },
+          "engines": {
+            "dsh": ">=0.2.1-rc.2 <0.3.0"
+          }
+        },
+        {
           "version": "0.2.4",
           "publishTimestamp": 1795399656,
           "source": {
